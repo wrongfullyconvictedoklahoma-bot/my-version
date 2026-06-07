@@ -11,21 +11,20 @@ cmake_minimum_required(VERSION 3.22.1)
 # build script scope).
 project("chatqnn")
 
-set(GENIE_HEADERS_PATH "${QNN_SDK_ROOT_PATH}/include/Genie")
-set(GENIE_LIB_PATH "${QNN_SDK_ROOT_PATH}/lib/aarch64-android/libGenie.so")
+# NOTE: QNN/Genie module is disabled - using API-only models
+# To re-enable, uncomment the lines below and ensure QNN SDK is available
 
-include_directories("includes")
-
-# Include Genie headers here
-include_directories(${GENIE_HEADERS_PATH})
-
-message(STATUS "Source files: ${CMAKE_CURRENT_SOURCE_DIR}/GenieLib.cpp")
-add_library(${CMAKE_PROJECT_NAME} SHARED
-        # List C/C++ source files with relative paths to this CMakeLists.txt.
-        ${CMAKE_CURRENT_SOURCE_DIR}/GenieWrapper.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/GenieLib.cpp)
-
-target_link_libraries(${CMAKE_PROJECT_NAME}
-        "${GENIE_LIB_PATH}"
-        android
-        log)
+# set(GENIE_HEADERS_PATH "${QNN_SDK_ROOT_PATH}/include/Genie")
+# set(GENIE_LIB_PATH "${QNN_SDK_ROOT_PATH}/lib/aarch64-android/libGenie.so")
+# 
+# include_directories("includes")
+# include_directories(${GENIE_HEADERS_PATH})
+# 
+# add_library(${CMAKE_PROJECT_NAME} SHARED
+#         ${CMAKE_CURRENT_SOURCE_DIR}/GenieWrapper.cpp
+#         ${CMAKE_CURRENT_SOURCE_DIR}/GenieLib.cpp)
+# 
+# target_link_libraries(${CMAKE_PROJECT_NAME}
+#         "${GENIE_LIB_PATH}"
+#         android
+#         log)
